@@ -1,0 +1,2619 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxH08_vQhw7nqJCy3igwm70zXI2Mwau8CvcIeXdZMF2dFm9bPfgWtP6En4GQZGKte7c/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_BIO_07 = [
+    {
+        question: "Aristotle's 'Scala Naturae' described life as existing in what state?",
+        options: [
+            "A dynamically evolving system.",
+            "A permanent, fixed hierarchy.",
+            "A progression based on genetic mutations.",
+            "A temporary arrangement awaiting divine intervention."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that Aristotle's Scala Naturae 'was considered permanent and unchanging.'"
+    },
+    {
+        question: "What fundamental aspect of species does the Special Creation theory reject?",
+        options: [
+            "Their capacity for biological change.",
+            "Their potential for interbreeding.",
+            "Their inherent genetic stability.",
+            "Their dependence on environmental factors."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that Special Creation asserts species are 'not capable of change,' which implies a denial of biological modification."
+    },
+    {
+        question: "Early evolutionists believed the universe and man arose from what process?",
+        options: [
+            "Random, unguided catastrophic events.",
+            "Innumerable changes from lower to higher forms.",
+            "Fixed, pre-determined natural cycles.",
+            "Sudden, singular creative acts."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that early evolutionists believed the universe and man are 'results of innumerable changes from lower to higher forms, not sudden creative acts.'"
+    },
+    {
+        question: "The earliest forms of life, according to the evolutionist view, were specifically what?",
+        options: [
+            "Absorptive chemosynthetic forms.",
+            "Unicellular eukaryotes.",
+            "Archaeobacteria.",
+            "Complex multicellular organisms."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that the 'First living beings were prokaryotes, specifically Archaeobacteria (Archaea).'"
+    },
+    {
+        question: "Early Earth's atmosphere, crucial for the origin of life, prominently lacked which gas?",
+        options: [
+            "Oxygen.",
+            "Methane.",
+            "Carbon dioxide.",
+            "Hydrogen sulfide."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that the 'Early Earth atmosphere was reduced (without oxygen).'"
+    },
+    {
+        question: "The evolution of an oxidizing atmosphere, leading to terrestrial life, hinged on what biological innovation?",
+        options: [
+            "Chemosynthetic autotroph development.",
+            "Photosynthesis liberating oxygen.",
+            "Anaerobic respiration in deep-sea archaea.",
+            "The advent of absorptive heterotrophy."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that the 'shift from a reducing to an oxidizing atmosphere (due to early photosynthetic organisms using hydrogen sulfide, then water, liberating oxygen) made life on land possible with the formation of the ozone layer.'"
+    },
+    {
+        question: "Lamarck's comprehensive evolutionary model was published in which work?",
+        options: [
+            "An Essay on the Principle of Population.",
+            "On the Origin of Species.",
+            "Philosophie Zoologique.",
+            "Principles of Geology."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that Lamarck's model was 'published in Philosophie Zoologique (1809).'"
+    },
+    {
+        question: "Lamarck's theory posits what happens to organs used more frequently?",
+        options: [
+            "They remain unchanged in structure.",
+            "They become stronger and larger.",
+            "They undergo spontaneous genetic mutations.",
+            "They are gradually lost over generations."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that 'Organs used more frequently become stronger/larger.'"
+    },
+    {
+        question: "A blacksmith's muscular development, if inherited, would illustrate which Lamarckian principle?",
+        options: [
+            "Inheritance of acquired characteristics.",
+            "Genetic recombination leading to stronger musculature.",
+            "Natural selection for advantageous traits.",
+            "Environmental influence on genetic expression."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that Lamarck proposed the 'Inheritance of Acquired Characteristics,' using the blacksmith's bicep as an example."
+    },
+    {
+        question: "Cuvier proposed which theory to explain species destruction and fossilization?",
+        options: [
+            "Catastrophism.",
+            "Uniformitarianism.",
+            "Descent with modification.",
+            "Inheritance of acquired characteristics."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that 'Georges Cuvier (1769-1832): Proposed the theory of Catastrophism.'"
+    },
+    {
+        question: "Uniformitarianism influenced Darwin by providing which crucial insight?",
+        options: [
+            "The universal similarity of living organisms.",
+            "The rapid, abrupt formation of new landforms.",
+            "An extended geological timescale.",
+            "The constant rate of species extinction."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that Uniformitarianism 'concluded Earth was very old... providing the immense timeframe necessary for gradual evolutionary change.'"
+    },
+    {
+        question: "Malthus's work, detailing population growth exceeding food supply, shaped Darwin's understanding of what?",
+        options: [
+            "Reproductive isolation mechanisms.",
+            "The struggle for existence.",
+            "Genetic mutation rates.",
+            "The inheritance of acquired traits."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that Malthus's idea of a 'struggle for existence' due to limited resources 'helped Darwin conceive the mechanism of natural selection.'"
+    },
+    {
+        question: "Alfred Russel Wallace independently developed a theory identical to Darwin's on what?",
+        options: [
+            "Catastrophism.",
+            "The Scala Naturae.",
+            "Natural selection.",
+            "Inheritance of acquired characteristics."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that 'Alfred Russell Wallace... Independently developed a theory of natural selection virtually identical to Darwin's.'"
+    },
+    {
+        question: "Darwin made crucial observations during his voyage on which ship?",
+        options: [
+            "The Discovery.",
+            "The Endeavour.",
+            "The Beagle.",
+            "The Challenger."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that Darwin was 'Naturalist on the HMS Beagle voyage (1831-1836).'"
+    },
+    {
+        question: "Which Galapagos species was pivotal for Darwin's insights on adaptation?",
+        options: [
+            "Albatrosses.",
+            "Flamingos.",
+            "Finches.",
+            "Pigeons."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that Darwin 'Noted the diversity of giant tortoises and 13 types of finches with varied beaks.'"
+    },
+    {
+        question: "One main point of Darwin's theory states that all organisms share what?",
+        options: [
+            "Uniform rates of mutation.",
+            "A common ancestor.",
+            "The same habitat requirements.",
+            "Identical genetic sequences."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that 'Descent with Modification: All organisms are related through descent from a common ancestor.'"
+    },
+    {
+        question: "Which Darwinian postulate directly leads to the 'struggle for existence'?",
+        options: [
+            "Heritable variations among individuals.",
+            "The potential for exponential population growth.",
+            "Reproductive isolation mechanisms.",
+            "Environmental stability over generations."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that 'Overproduction... leading to exponential population growth' is an observation, and 'Overproduction leads to competition for limited resources... and survival... (intra-specific, inter-specific, extra-specific struggle).'"
+    },
+    {
+        question: "What is the heritability status of adaptations acquired by an organism's actions?",
+        options: [
+            "They are immediately integrated into the germline.",
+            "They are strongly favored by natural selection.",
+            "They are not heritable.",
+            "They rapidly cause new species formation."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that 'Adaptations acquired by an organism's actions are not heritable.'"
+    },
+    {
+        question: "The Modern Evolutionary Synthesis integrated natural selection with which field?",
+        options: [
+            "Alchemy.",
+            "Mendelism (genetics).",
+            "Astronomy.",
+            "Astrology."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that Neo-Darwinism 'integrating Darwin's natural selection with discoveries from various fields... Key Integrations: Population genetics, Mendelism (genetics).'"
+    },
+    {
+        question: "Which of these is a major cause of evolutionary change in Neo-Darwinism?",
+        options: [
+            "Acquired characteristics.",
+            "Genetic drift.",
+            "Catastrophic extinctions.",
+            "Uniformitarian processes."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory lists 'Genetic Drift' as one of the 'Five Major Causes of Evolutionary Change.'"
+    },
+    {
+        question: "What is the primary role of genetic recombination in Neo-Darwinian evolution?",
+        options: [
+            "Eliminating disadvantageous alleles.",
+            "Creating new genetic combinations.",
+            "Preventing gene flow between species.",
+            "Initiating de novo mutations."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that 'Genetic Recombination: Reshuffling of genes during sexual reproduction... creates new genetic combinations.'"
+    },
+    {
+        question: "Gene and chromosomal mutations contribute to evolution by providing what?",
+        options: [
+            "Prevention of interbreeding.",
+            "Raw material for variation.",
+            "Direct selection for fitter individuals.",
+            "Random changes in gene frequencies."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that 'Gene and Chromosomal Mutation: Provide raw material for variation.'"
+    },
+    {
+        question: "In what type of rock are most fossils found?",
+        options: [
+            "Igneous.",
+            "Sedimentary.",
+            "Metamorphic.",
+            "Volcanic."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that 'Most are found in sedimentary rocks.'"
+    },
+    {
+        question: "Which chronological sequence of vertebrates is correct, from earliest to most recent?",
+        options: [
+            "Reptiles, amphibians, fishes, mammals.",
+            "Fishes, amphibians, reptiles, mammals.",
+            "Mammals, birds, reptiles, amphibians.",
+            "Amphibians, fishes, birds, reptiles."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State the 'Vertebrate sequence: fishes (earliest), amphibians, reptiles, mammals, birds.'"
+    },
+    {
+        question: "What kind of structures are vertebrate forelimbs (e.g., human hand, bat wing)?",
+        options: [
+            "Homologous structures.",
+            "Analogous structures.",
+            "Vestigial organs.",
+            "Acquired characteristics."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory defines 'Homologous Structures' as 'Body parts with similar structural plan and developmental origin, inherited from a common ancestor, but adapted for different functions,' listing 'Vertebrate forelimbs' as examples."
+    },
+    {
+        question: "The pentadactyl limb in tetrapods is evidence for which evolutionary pattern?",
+        options: [
+            "Regressive evolution.",
+            "Divergent evolution.",
+            "Convergent evolution.",
+            "Parallel evolution."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states the 'Pentadactyl Limb' is an example of homologous structures, and homologous structures are evidence of 'Divergent evolution (species from a common ancestor evolve different traits in different habitats).'"
+    },
+    {
+        question: "Wings of birds and insects are classic examples of what anatomical evidence?",
+        options: [
+            "Homologous structures.",
+            "Analogous organs.",
+            "Vestigial organs.",
+            "Divergent structures."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory lists 'Wings of birds, butterflies, insects, pterosaurs, bats (all for flight but structurally different)' as examples of 'Analogous Organs.'"
+    },
+    {
+        question: "What specific human anatomical feature is cited as a vestigial organ?",
+        options: [
+            "The heart.",
+            "The lungs.",
+            "The appendix.",
+            "The brain."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory lists 'Vermiform appendix, coccyx (tailbone), ear muscles in humans' as examples of 'Vestigial Organs/Structures.'"
+    },
+    {
+        question: "What common feature is observed in early vertebrate embryonic development?",
+        options: [
+            "Unique embryonic structures for each species.",
+            "Presence of gill pouches on the throat.",
+            "Formation of a permanent notochord.",
+            "Direct development into adult form."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that 'All vertebrate embryos have gill pouches on the sides of their throats.'"
+    },
+    {
+        question: "Haeckel's principle, 'ontogeny recapitulates phylogeny,' suggests what about an organism's development?",
+        options: [
+            "It is entirely unique to the species.",
+            "It repeats its ancestral evolutionary history.",
+            "It is determined solely by environmental factors.",
+            "It is a random process without a fixed pattern."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that Haeckel 'Formulated 'ontogeny recapitulates phylogeny' (an organism's developmental stages repeat its evolutionary history).'"
+    },
+    {
+        question: "The geographical distribution patterns of plants and animals constitute evidence for which field?",
+        options: [
+            "Paleontology.",
+            "Embryology.",
+            "Biogeography.",
+            "Taxonomy."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states 'Biogeography (Geographical Distribution): The study of the geographical distribution of organisms.'"
+    },
+    {
+        question: "The universality of the genetic code implies what about life's origin?",
+        options: [
+            "Independent origins of life.",
+            "Convergent biochemical evolution.",
+            "A single common ancestor for all life.",
+            "Environmental influence on gene expression."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that 'Organisms utilize the same DNA triplet code' and concludes 'similar sequences imply common ancestry. Molecular biology strongly supports the unity and diversity of life through evolution.'"
+    },
+    {
+        question: "The presence of cytochrome c in humans and bacteria indicates what?",
+        options: [
+            "A recent, direct ancestral link.",
+            "Convergent evolution of metabolism.",
+            "A very ancient, shared common ancestor.",
+            "Spontaneous generation of essential proteins."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states 'Taxonomically remote organisms (e.g., humans and bacteria) share proteins like cytochrome c... similar sequences imply common ancestry.' This suggests a very deep, ancient common ancestry."
+    },
+    {
+        question: "Antibiotic resistance in bacteria is a contemporary example of what mechanism?",
+        options: [
+            "Genetic drift.",
+            "Artificial selection.",
+            "Natural selection.",
+            "Genetic recombination."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states: 'Example: Evolution of antibiotic resistance in bacteria is natural selection in action.'"
+    },
+    {
+        question: "What is the term for one ancestral species diverging into multiple new species?",
+        options: [
+            "Hybridization.",
+            "Genetic bottleneck.",
+            "Speciation.",
+            "Adaptive radiation."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory defines 'Speciation: The process by which one ancestral species diverges into multiple descendant species.'"
+    },
+    {
+        question: "Artificial selection serves as a human-driven model for which natural mechanism?",
+        options: [
+            "Genetic drift.",
+            "Natural selection.",
+            "Gene mutation.",
+            "Reproductive isolation."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states artificial selection provides 'a model for natural selection over vast timescales.'"
+    },
+    {
+        question: "Modern biologists estimate life began on Earth approximately how long ago?",
+        options: [
+            "420 million years.",
+            "3.5 billion years.",
+            "5 billion years.",
+            "5600 years."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that 'Modern biologists estimate Earth is over 5 billion years old, with life beginning ~3.5 billion years ago as unicellular prokaryotes.'"
+    },
+    {
+        question: "Carolus Linnaeus was a proponent of which early view on life's origin?",
+        options: [
+            "Evolutionary change.",
+            "Special Creation.",
+            "The Scala Naturae.",
+            "Uniformitarianism."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states 'Carolus Linnaeus (1707-1778) was a proponent' of Special Creation."
+    },
+    {
+        question: "The fundamental flaw in Lamarck's theory stemmed from unawareness of what?",
+        options: [
+            "The genetic basis of inheritance.",
+            "The role of environmental adaptation.",
+            "The process of natural selection.",
+            "The concept of vestigial organs."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that 'Acquired characteristics have no genetic basis and cannot be inherited. Lamarck was unaware of the mechanism of inheritance (Mendel's work in 1865).'"
+    },
+    {
+        question: "What idea of Malthus's directly informed Darwin's natural selection mechanism?",
+        options: [
+            "Exponential human population growth.",
+            "The 'struggle for existence' due to limited resources.",
+            "Arithmetical food supply increase.",
+            "The impact of disease on population size."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states Malthus's idea 'leading to a 'struggle for existence' due to limited resources' 'helped Darwin conceive the mechanism of natural selection.'"
+    },
+    {
+        question: "Darwin's *On the Origin of Species* was published in what year?",
+        options: [
+            "1865.",
+            "1831.",
+            "1859.",
+            "1809."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that Darwin 'Published On the Origin of Species by Means of Natural Selection in 1859.'"
+    },
+    {
+        question: "The diversity of finch beaks on the Galapagos is an example of what process?",
+        options: [
+            "Random, non-adaptive changes.",
+            "Convergent evolution.",
+            "Gradual accumulation of adaptations.",
+            "Direct genetic manipulation."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that Darwin's observations of '13 types of finches with varied beaks adapted to different food sources and habitats' 'led to the idea that new species originate from ancestral forms by gradual accumulation of adaptations.'"
+    },
+    {
+        question: "Darwin's 'Descent with Modification' depicts life's history resembling what?",
+        options: [
+            "A static pyramid.",
+            "A linear progression.",
+            "A branching tree.",
+            "A continuous cycle."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that 'Life's history resembles a branching tree.'"
+    },
+    {
+        question: "What competition for resources is described as intra-specific, inter-specific, and extra-specific?",
+        options: [
+            "Overproduction.",
+            "Struggle for Existence.",
+            "Variation.",
+            "Survival of the Fittest."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states 'Struggle for Existence: Overproduction leads to competition for limited resources (food, water, light, space) and survival against predators, disease, and environmental conditions (intra-specific, inter-specific, extra-specific struggle).'"
+    },
+    {
+        question: "Who coined the phrase 'survival of the fittest'?",
+        options: [
+            "Alfred Russel Wallace.",
+            "Jean-Baptiste Lamarck.",
+            "Herbert Spencer.",
+            "Charles Darwin."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory Note: '(Herbert Spencer coined \"survival of the fittest\").'"
+    },
+    {
+        question: "Genetic drift is most significant in what kind of populations?",
+        options: [
+            "Small, isolated populations.",
+            "Large, stable populations.",
+            "Populations undergoing rapid gene flow.",
+            "Populations with high mutation rates."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that 'Genetic Drift: Random changes in gene frequencies, particularly significant in small populations.'"
+    },
+    {
+        question: "Reproductive isolation directly contributes to evolution by doing what?",
+        options: [
+            "Preventing interbreeding between species.",
+            "Increasing genetic recombination.",
+            "Enhancing natural selection's efficiency.",
+            "Accelerating mutation rates."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that 'Reproductive Isolation: Prevents interbreeding between species, leading to their divergence and the establishment of new species.'"
+    },
+    {
+        question: "Older, deeper rock layers in the fossil record typically contain what?",
+        options: [
+            "Only eukaryotic organisms.",
+            "Simpler fossils.",
+            "More complex fossils.",
+            "Evidence of recent extinctions."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that 'Older, deeper rock layers contain simpler fossils.'"
+    },
+    {
+        question: "The evolution of the modern horse from *Eohippus* is a classic example from which evidence type?",
+        options: [
+            "Fossil record.",
+            "Comparative anatomy.",
+            "Biogeography.",
+            "Molecular biology."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory lists 'Evolution of the modern horse (from Eohippus)' as an example under 'Fossil Record (Paleontology).'"
+    },
+    {
+        question: "What method determines fossil ages using fixed radioactive isotope decay rates?",
+        options: [
+            "Dendrochronology.",
+            "Paleomagnetism.",
+            "Radiometric Dating.",
+            "Stratigraphy."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states: 'Radiometric Dating (Radioactive Dating): Uses the fixed decay rates (half-life) of radioactive isotopes... to determine fossil ages.'"
+    },
+    {
+        question: "The phenomenon of divergent evolution results in species adapting to what?",
+        options: [
+            "Identical environmental pressures.",
+            "Distinct habitats and functional roles.",
+            "Convergent developmental pathways.",
+            "Increased rates of genetic drift."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory defines 'Divergent evolution' as 'species from a common ancestor evolve different traits in different habitats.' Different traits/habitats implies distinct functional roles."
+    },
+    {
+        question: "The human coccyx is an example of what evolutionary anatomical evidence?",
+        options: [
+            "Newly acquired trait.",
+            "Vestigial organ.",
+            "Homologous structure.",
+            "Analogous structure."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory lists 'coccyx (tailbone)' as an example of a 'Vestigial Organs/Structures.'"
+    },
+    {
+        question: "Why is the absence of rabbits in South America, despite suitable habitat, significant for biogeography?",
+        options: [
+            "It suggests their origin elsewhere and inability to disperse.",
+            "It indicates their extinction due to climate change.",
+            "It shows a recent divergence from a common ancestor.",
+            "It points to a lack of genetic variation in rabbits."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory mentions 'Lack of rabbits in South America despite suitable environment (originated elsewhere, couldn't reach)' as evidence for Biogeography."
+    },
+    {
+        question: "What is a shared basic biochemical molecule across all living organisms?",
+        options: [
+            "Cellulose.",
+            "Chlorophyll.",
+            "DNA.",
+            "Glycogen."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory lists 'Same basic biochemical molecules (DNA, ATP, identical enzymes).'"
+    },
+    {
+        question: "What distinguishes homologous from analogous structures in terms of common ancestry?",
+        options: [
+            "Homologous share ancestry, analogous do not.",
+            "Analogous arise from convergent evolution, homologous from divergent.",
+            "Analogous have similar functions, homologous different.",
+            "Analogous found in related species, homologous in distant."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory defines 'Homologous Structures' as 'inherited from a common ancestor' and 'Analogous Organs' as having 'different structures and evolutionary origins.'"
+    },
+    {
+        question: "The Darwinian concept of 'variation' requires what characteristic for evolutionary change?",
+        options: [
+            "It must be acquired during an organism's lifetime.",
+            "It must lead to immediate reproductive success.",
+            "It must be heritable.",
+            "It must be identical across all individuals."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states 'Variation: Individuals within a population exhibit heritable variations in traits. Some variations are useful (advantageous for survival/reproduction), others harmful (disadvantageous).'"
+    },
+    {
+        question: "Which early prokaryotes emerged first in the evolutionist view?",
+        options: [
+            "Chemosynthetic autotrophs.",
+            "Photosynthetic organisms.",
+            "Absorptive heterotrophs.",
+            "Obligate aerobes."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that 'Early prokaryotes were absorptive heterotrophs, followed by chemosynthetic autotrophs.'"
+    },
+    {
+        question: "The inherent absence of genetic basis in acquired characteristics disproves which theory?",
+        options: [
+            "Catastrophism.",
+            "Lamarckism.",
+            "Uniformitarianism.",
+            "Special Creation."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that 'Acquired characteristics have no genetic basis and cannot be inherited,' which is a drawback of Lamarckism."
+    },
+    {
+        question: "Lyell's *Principles of Geology* primarily provided Darwin with what?",
+        options: [
+            "A vast timescale for gradual change.",
+            "Proof of Catastrophism.",
+            "Evidence for instantaneous speciation.",
+            "The concept of population overshoot."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states Lyell's book 'profoundly influenced Darwin... providing the immense timeframe necessary for gradual evolutionary change.'"
+    },
+    {
+        question: "What idea of Malthus's directly informed Darwin's natural selection mechanism?",
+        options: [
+            "Exponential human population growth.",
+            "The 'struggle for existence' due to limited resources.",
+            "Arithmetical food supply increase.",
+            "The impact of disease on population size."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states Malthus's idea 'leading to a 'struggle for existence' due to limited resources' 'helped Darwin conceive the mechanism of natural selection.'"
+    },
+    {
+        question: "The Darwinian principle of 'Natural Selection and Adaptation' describes what?",
+        options: [
+            "Random, undirected evolutionary change.",
+            "Populations adapting to local environments.",
+            "The creation of entirely new genetic material.",
+            "The rapid transformation of species."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that 'Natural Selection and Adaptation: Populations of individual species become better adapted to their local environments through natural selection.'"
+    },
+    {
+        question: "A population with significant heritable variation facing resource scarcity exemplifies what?",
+        options: [
+            "Genetic drift's primary influence.",
+            "Lamarckian inheritance.",
+            "Differential survival and reproduction.",
+            "Reproductive isolation's onset."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states 'Variation' and 'Struggle for Existence' (resource scarcity) lead to 'Survival of the Fittest (Natural Selection): Individuals with the most favorable heritable variations are more likely to survive, reproduce,' which is differential survival and reproduction."
+    },
+    {
+        question: "The Neo-Darwinian synthesis reconciles Darwin's ideas with discoveries from what specific area?",
+        options: [
+            "Alchemy and Astrology.",
+            "Population genetics and Mendelism.",
+            "Geological catastrophism.",
+            "Pre-Mendelian theories of heredity."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states Neo-Darwinism 'reconciled Mendelism (genetics) with Darwinism (natural selection), integrating discoveries from paleontology, taxonomy, biogeography, and population genetics.'"
+    },
+    {
+        question: "Meiosis, random assortment, and crossing over create what raw material for evolution?",
+        options: [
+            "Reproductive isolation.",
+            "New gene mutations.",
+            "Genomic stability.",
+            "Genetic recombination."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory states 'Genetic Recombination: Reshuffling of genes during sexual reproduction (meiosis, random assortment, crossing over) creates new genetic combinations.'"
+    },
+    {
+        question: "The gradual accumulation of favorable characteristics ultimately leads to what process?",
+        options: [
+            "Catastrophism.",
+            "Mutation.",
+            "Speciation.",
+            "Genetic drift."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states 'Survival of the Fittest... leads to a gradual accumulation of favorable characteristics and the evolution of new species (Speciation).'"
+    },
+    {
+        question: "*Archaeopteryx* with reptilian and avian traits illustrates what about evolutionary pathways?",
+        options: [
+            "Strictly linear, unbranched evolution.",
+            "Transitional forms between groups.",
+            "Rapid, non-gradual speciation.",
+            "Convergent evolution of flight."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states *Archaeopteryx* is a 'fossil bird with both reptilian and avian characteristics.' This represents a transitional form, challenging a strictly linear view."
+    },
+    {
+        question: "The observation of gill pouches in all vertebrate embryos suggests what?",
+        options: [
+            "A recent, common aquatic ancestor.",
+            "Independent evolutionary origins.",
+            "Convergent evolution of aquatic adaptations.",
+            "Identical adult structures in all vertebrates."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states 'All vertebrate embryos have gill pouches... which develop into gills in fish, but become modified... in terrestrial vertebrates.' This implies a shared ancestral developmental stage, pointing to common ancestry."
+    },
+    {
+        question: "The unique diversity of Australian marsupials is primarily due to what?",
+        options: [
+            "High rates of gene flow.",
+            "Isolated evolution.",
+            "Frequent intercontinental migration.",
+            "Direct inheritance of acquired traits."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory refers to 'unique diversity of Australian marsupials... due to isolated evolution.'"
+    },
+    {
+        question: "Similar DNA and protein sequences across species imply what relationship?",
+        options: [
+            "Random genetic coincidence.",
+            "Common ancestry.",
+            "Independent biochemical pathways.",
+            "Environmental convergent pressures."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states 'Evolutionary relationships are reflected in DNA and protein sequences; similar sequences imply common ancestry.'"
+    },
+    {
+        question: "What concept posits that Earth's geological change occurs slowly and continuously?",
+        options: [
+            "Catastrophism.",
+            "Uniformitarianism.",
+            "Neptunism.",
+            "Plutonism."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states 'Uniformitarianism: Geological processes... act slowly and continuously over vast periods.'"
+    },
+    {
+        question: "What is the primary role of natural selection as a cause of evolutionary change?",
+        options: [
+            "Providing raw material for variation.",
+            "Reshuffling existing genes.",
+            "Selecting for fitter individuals.",
+            "Preventing interbreeding."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states 'Natural Selection: Environmental pressures select for fitter individuals, molding species to fit changing environments.'"
+    },
+    {
+        question: "The fossil record provides what kind of evidence for evolution?",
+        options: [
+            "A molecular clock for dating.",
+            "A visual record of progressive changes.",
+            "Evidence of constant species forms.",
+            "Proof of spontaneous generation."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states the fossil record 'Provides a visual record of progressive changes in forms over time.'"
+    },
+    {
+        question: "What pattern of evolution is demonstrated by homologous structures?",
+        options: [
+            "Convergent evolution.",
+            "Divergent evolution.",
+            "Parallel evolution.",
+            "Coevolution."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that homologous structures are evidence for 'Divergent evolution (species from a common ancestor evolve different traits in different habitats).'"
+    },
+    {
+        question: "Analogous organs show adaptation to similar environmental demands but have what?",
+        options: [
+            "Similar structures and origins.",
+            "Different structures and origins.",
+            "Similar functions and origins.",
+            "Different functions but similar structures."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory defines 'Analogous Organs' as 'Organs with similar functions but different structures and evolutionary origins, demonstrating adaptation to similar environmental demands.'"
+    },
+    {
+        question: "Vestigial structures are considered strong evidence for evolution because they are what?",
+        options: [
+            "Complex and highly functional.",
+            "Remnants of ancestral functions.",
+            "New adaptations to changing environments.",
+            "Result of convergent evolution."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory defines 'Vestigial Organs/Structures' as 'Rudimentary structures that had important functions in ancestors but are reduced and non-functional in modern organisms' and states they are 'Most convincing evidence as they are remnants of evolutionary history.'"
+    },
+    {
+        question: "Embryological similarities are most apparent during which developmental stages?",
+        options: [
+            "Post-hatching/birth stages.",
+            "Early embryonic stages.",
+            "Fetal development.",
+            "Late embryonic stages."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states 'Similarities are more apparent in early embryonic stages, diverging later.'"
+    },
+    {
+        question: "Factors inhibiting geographical distribution include physical barriers and what else?",
+        options: [
+            "Genetic recombination.",
+            "Environmental conditions.",
+            "Uniformitarian processes.",
+            "Overproduction of offspring."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory lists 'Physical barriers (ocean, desert, mountain), environmental (unfavorable climate), ecological (competitors)' as 'Factors Inhibiting Distribution.'"
+    },
+    {
+        question: "Evolutionary relationships are reflected in the sequences of what molecules?",
+        options: [
+            "Water and salts.",
+            "DNA and proteins.",
+            "Carbohydrates and lipids.",
+            "Vitamins and minerals."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states 'Evolutionary relationships are reflected in DNA and protein sequences; similar sequences imply common ancestry.'"
+    },
+    {
+        question: "The process by which humans selectively breed organisms for desired traits is called?",
+        options: [
+            "Natural selection.",
+            "Genetic drift.",
+            "Artificial selection.",
+            "Genetic engineering."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory defines 'Artificial Selection' as 'Humans selectively breed organisms for desired traits.'"
+    },
+    {
+        question: "The shift from an ozone-less early Earth to one with an ozone layer was key for what?",
+        options: [
+            "Increased UV radiation exposure.",
+            "Spontaneous generation in vents.",
+            "Life on land becoming possible.",
+            "The dominance of prokaryotes."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states the 'formation of the ozone layer (~420 million years ago)' 'made life on land possible.'"
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Biology ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-BIO-07';
+let quizData = quizData_WCW_BIO_07;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-BIO-07', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-BIO-07', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-BIO-07', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_BIO_07;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_BIO_07;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_BIO_07[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_BIO_07.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
